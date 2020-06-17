@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/weather-icons.css">
+  <link rel="stylesheet" href="css/main.css">
+  <title>Sen&nbsp;is&nbsp;Great&nbsp;</title>
+
+
+
+
+</head>
+<body onload="titleAnim()">
+  <section>
+    <div class="search-group">
+      <i class="fa fa-search icon" aria-hidden="true"></i>
+      <input type="text" class="search" id="search" placeholder="Search With Duck Duck Go...">
+    </div>
+    <div class="row">
+      
+      <div class="card-time">
+        <h2 class="cardHeader">Time</h2>
+        <div class="group">
+          <h2 class="title" id="hour"></h2>
+          <p class="subtitle" id="date"></p>
+        </div>
+      </div>
+      <div class="card-links">
+        <h2 class="cardHeader">Links</h2>
+        <div class="links">
+          <div class="cat-group">
+            <h3 class="cat">4chan:</h3>
+            <p><a href="http://boards.4chan.org/g/">/g/</a>, </p>
+            <p><a href="http://boards.4chan.org/r9k/">/r9k/</a></p>
+            <p><a href="http://boards.4chan.org/w/">/w/</a>, </p>
+            <p><a href="http://boards.4chan.org/wg/">/wg/</a></p>
+          </div>
+          <div class="cat-group">
+            <h3 class="cat">Oneechan:</h3>
+            <p><a href="https://onee.ch">Index</a>, </p>
+            <p><a href="https://onee.ch/b/">/b/</a> </p>
+          </div>
+          <div class="cat-group">
+            <h3 class="cat">Fun:</h3>
+            <p><a href="https://www.youtube.com/">YouTube</a>,</p>
+            <p><a href="https://kimcartoon.to/">Cartoons</a>,</p>
+            <p><a href="https://kissanime.ru/">Anime</a></p>
+          </div>
+          <div class="cat-group">
+            <h3 class="cat">Imageboards:</h3>
+            <p><a href="http://31.148.96.156/chat/int">KotChan</a>,</p>
+            <p><a href="https://www.4kev.org/index.php">4kev</a></p>
+          </div>
+          <div class="cat-group">
+            <h3 class="cat">"Work":</h3>
+            <p><a href="https://github.com/">GitHub</a>, </p>
+            <p><a href="https://mail.google.com/mail/u/0/#inbox">Gmail</a>,</p>
+            <p><a href="https://outlook.office365.com/mail/inbox">OneeChan Email</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="card-anime">
+        <h2 class="cardHeader">Random Neko</h2>
+        <div class="group">
+          <div id="nekoImg"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Random nekos are pretty cool -->
+  <script>
+    var nekoArr = {};
+    var nekoUrl = "";
+    fetch('https://nekos.life/api/v2/img/neko')
+    .then((response) => {
+      return response.text();
+    })
+    .then((data) => {
+      nekoArr = JSON.parse(data);
+      nekoUrl = nekoArr["url"];
+      var img = document.createElement("img");
+      img.src = nekoUrl;
+      img.id = "returnedImage"
+      var src = document.getElementById("nekoImg");
+      src.appendChild(img); 
+    })
+  </script>   
+  <script src="js/search.js"></script>
+  <script src="js/time.js"></script>
+  <script
+			  src="https://code.jquery.com/jquery-3.1.1.min.js"
+			  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous">
+  </script>
+  <script type="text/javascript">
+    var titleText = document.title;
+    function titleAnim() {
+     titleText = titleText.substring(1, titleText.length) + titleText.substring(0, 1);
+     document.title = titleText;
+     setTimeout("titleAnim()", 450);
+     }
+  </script>
+</body>
+</html>
