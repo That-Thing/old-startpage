@@ -20,6 +20,12 @@ body {
 }
 
 
+@font-face {
+  font-family: 'vcr';
+  src: url('../font/vcr.ttf') format('truetype');
+}  
+
+
 span.hidden {
   opacity: 0;
 }
